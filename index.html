@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="it"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Stato evento&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="color-scheme" content="light dark" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--ok:#16a34a;<span class="Apple-converted-space">        </span>/* verde */</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--warn:#f59e0b;<span class="Apple-converted-space">      </span>/* giallo */</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bad:#dc2626; <span class="Apple-converted-space">      </span>/* rosso */</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--fg:#111;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--muted:#666;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--card:#f7f7f7;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--radius:18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>@media (prefers-color-scheme: dark){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>:root{ --fg:#eee; --bg:#0b0b0b; --muted:#aaa; --card:#141414; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html,body{ height:100%; margin:0; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>color:var(--fg); background:var(--bg); display:flex; align-items:center; justify-content:center; padding:20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.wrap{ width:min(920px, 100%); display:grid; gap:16px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.poster{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow:hidden;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 6px 24px rgba(0,0,0,.15);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>aspect-ratio: 3/4; <span class="Apple-converted-space">  </span>/* cambia se il tuo poster è 16/9, allora usa 16/9 */</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:grid; place-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.poster img{ width:100%; height:100%; object-fit:cover; display:block; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.status{</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display:flex; align-items:center; gap:12px; padding:14px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-radius: calc(var(--radius) - 6px);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background:var(--card);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 3px 14px rgba(0,0,0,.1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.dot{ width:12px; height:12px; border-radius:50%; flex:0 0 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.label{ font-weight:700; letter-spacing:.2px; text-transform:uppercase; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.note{ color:var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.row{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; justify-content:space-between; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.ts{ font-size:12px; color:var(--muted); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.help{ font-size:12px; color:var(--muted); text-align:center; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.hidden{ display:none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main class="wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="poster" aria-label="Poster evento"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- Sostituisci poster.jpg con il tuo file --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;img src="poster.jpg" alt="Poster dell'evento" loading="eager" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="status" id="statusBox" aria-live="polite"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="dot" id="dot" style="background:var(--warn)"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="label" id="label"&gt;Da confermare&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="ts" id="ts"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="note" id="note"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p class="help"&gt;Scansiona questo QR per tornare a questa pagina e vedere gli aggiornamenti in tempo reale.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// URL del file di stato (accetta ?status= per test/override manuale)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const statusUrl = "status.json";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setUI(status, note, fetchedAt){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const label = document.getElementById('label');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dot = document.getElementById('dot');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const noteEl = document.getElementById('note');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const ts = document.getElementById('ts');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const map = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>confirmed: { text: "Evento confermato", color: "var(--ok)" },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>canceled:<span class="Apple-converted-space">  </span>{ text: "Evento annullato",<span class="Apple-converted-space">  </span>color: "var(--bad)" },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>pending: <span class="Apple-converted-space">  </span>{ text: "Da confermare", <span class="Apple-converted-space">    </span>color: "var(--warn)" }</p>
+<p class="p1"><span class="Apple-converted-space">      </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const m = map[status] || map.pending;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>label.textContent = m.text;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>dot.style.background = m.color;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>noteEl.textContent = note || "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>noteEl.classList.toggle('hidden', !note);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (fetchedAt){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Mostra l’ora locale con minuti (es. 18:42 del 23/10/2025)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const d = new Date(fetchedAt);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const opts = { day:"2-digit", month:"2-digit", year:"numeric", hour:"2-digit", minute:"2-digit" };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ts.textContent = `Aggiornato alle ${d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"})} del ${d.toLocaleDateString([], opts)}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function loadStatus(){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>try{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// evita cache aggressiva dei CDN/hosting</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const res = await fetch(`${statusUrl}?_=${Date.now()}`, {cache:"no-store"});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!res.ok) throw new Error("HTTP "+res.status);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const data = await res.json();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Consenti override veloce via querystring (?status=confirmed&amp;note=Cambia+location)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const q = new URLSearchParams(location.search);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const s = (q.get("status") || data.status || "pending").toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const n = q.get("note") ?? (data.note || "");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setUI(s, n, Date.now());</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}catch(e){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Se fallisce il fetch, mostra "Da confermare" per sicurezza</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setUI("pending", "Impossibile recuperare lo stato al momento. Riprovare fra poco.", Date.now());</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>loadStatus();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Aggiorna automaticamente ogni 60 secondi (puoi cambiare intervallo)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setInterval(loadStatus, 60000);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
